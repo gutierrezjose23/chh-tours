@@ -129,13 +129,14 @@ p, li, blockquote {
   min-height: 450px;
   overflow: hidden;
   display: flex;
-  align-items: center;
+  align-items: flex-start;        /* el texto sube un poco, deja ver más la parte de abajo */
   justify-content: center;
   text-align: center;
   color: #fff;
   border-radius: 18px;
   margin-bottom: 40px;
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.9);
+  padding-top: 60px;              /* espacio desde arriba para que no choque con el header */
 }
 
 .hero img {
@@ -144,49 +145,50 @@ p, li, blockquote {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: brightness(0.32);
+  filter: brightness(0.38);       /* baja un poquito la luz para que el texto resalte */
+  z-index: 0;
 }
 
-/* recuadro de texto encima de la imagen */
+/* Recuadro de texto encima de la imagen */
 .hero-content {
   position: relative;
-  z-index: 1;
-  max-width: 650px;
-  padding: 24px 22px;
-  background: rgba(15, 23, 42, 0.9);
+  z-index: 2;
+  max-width: 520px;               /* un poco más angosto */
+  padding: 18px 20px;             /* menos alto, tapa menos la foto */
+  background: rgba(15, 23, 42, 0.92);
   border-radius: 18px;
   border: 1px solid rgba(248, 113, 113, 0.4);
   box-shadow: 0 18px 45px rgba(0, 0, 0, 0.9);
 }
 
 .hero h2 {
-  font-size: 2.4em;
-  margin-bottom: 15px;
+  font-size: 2rem;                /* más compacto */
+  margin-bottom: 10px;
   color: #f9fafb;
 }
 
 .hero p {
-  font-size: 1.02em;
-  margin-top: 10px;
+  font-size: 0.95rem;
+  margin-top: 8px;
   color: #e5e7eb;
   line-height: 1.6;
   opacity: 0;
   transform: translateY(20px);
-  animation: aparecer 1s ease-out forwards;
-  animation-delay: 0.3s;
+  animation: aparecer 0.9s ease-out forwards;
+  animation-delay: 0.25s;
 }
 
 /* Botón de WhatsApp en el hero (se mantiene verde por marca) */
 .btn-whatsapp-hero {
   display: inline-block;
-  margin-top: 20px;
-  padding: 12px 28px;
+  margin-top: 16px;
+  padding: 10px 24px;
   background-color: #25D366;
   color: white;
   font-weight: 600;
   text-decoration: none;
   border-radius: 999px;
-  font-size: 1.05rem;
+  font-size: 0.98rem;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.9);
   transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -201,16 +203,23 @@ p, li, blockquote {
 @media (max-width: 768px) {
   .hero {
     height: 70vh;
+    padding-top: 40px;
+  }
+
+  .hero-content {
+    max-width: 90%;
+    padding: 16px 14px;
   }
 
   .hero h2 {
-    font-size: 2.1em;
+    font-size: 1.7rem;
   }
 
   .hero p {
-    font-size: 1em;
+    font-size: 0.9rem;
   }
 }
+
 
 /* ================== SECCIÓN ¿POR QUÉ ELEGIRNOS? ================== */
 .info {
@@ -884,9 +893,9 @@ tr:nth-child(even) {
 
 .luces-casa {
   position: relative;
-  height: 38px;            /* ocupa poquito alto */
-  margin: 4px 0 4px;
-  pointer-events: none;    /* para que no afecte clics */
+  height: 20px;   /* antes 38px */
+  margin: 0;
+  pointer-events: none;
 }
 
 /* Cada fila será una “guirnalda” en diagonal */
@@ -925,14 +934,9 @@ tr:nth-child(even) {
 
 /* focos (versión pequeña) */
 .foco {
-  position: relative;
-  width: 12px;      /* más pequeños */
-  height: 18px;
-  border-radius: 50% 50% 60% 60%;
-  margin-top: 12px;
-  box-shadow: 0 0 8px rgba(255,255,255,0.6);
-  animation: balanceo 2.4s ease-in-out infinite alternate,
-             parpadeoFoco 1.5s infinite alternate;
+  width: 8px;      /* antes 12px */
+  height: 12px;    /* antes 18px */
+  margin-top: 6px; /* más pegadas */
 }
 
 /* cablecito que cuelga al foco */
