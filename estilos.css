@@ -739,3 +739,372 @@ tr:nth-child(even) {
   transform: scale(1.05);
   box-shadow: 0 0 15px rgba(220, 38, 38, 0.7);
 }
+/* ===== 🎄 Luces navideñas en el header ===== */
+
+.navidad-luces {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  padding: 10px 0;
+  background: linear-gradient(to right, #05203a, #083454);
+  border-bottom: 3px solid #d4af37;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  position: relative;
+  z-index: 10;
+}
+
+.navidad-luces::before {
+  content: "";
+  position: absolute;
+  top: -6px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: #222;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.bulb {
+  width: 16px;
+  height: 24px;
+  border-radius: 50% 50% 45% 45%;
+  display: inline-block;
+  position: relative;
+  background: #ff0000;
+  box-shadow: 0 0 12px rgba(255,255,255,0.8);
+  animation: parpadeo 1.2s infinite alternate;
+}
+
+.bulb::before {
+  content: "";
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 6px;
+  border-radius: 2px;
+  background: #444;
+}
+
+/* Colores de cada foco */
+.bulb.rojo {
+  background: #ff4b4b;
+}
+.bulb.verde {
+  background: #4bff5a;
+}
+.bulb.amarillo {
+  background: #ffe066;
+}
+.bulb.azul {
+  background: #4bc3ff;
+}
+
+/* Efecto de parpadeo */
+@keyframes parpadeo {
+  0% {
+    opacity: 0.4;
+    transform: translateY(0);
+    box-shadow: 0 0 6px rgba(255,255,255,0.4);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(4px);
+    box-shadow: 0 0 16px rgba(255,255,255,1);
+  }
+}
+
+/* Desfase para que no parpadeen igual */
+.navidad-luces .bulb:nth-child(1) { animation-delay: 0s; }
+.navidad-luces .bulb:nth-child(2) { animation-delay: 0.2s; }
+.navidad-luces .bulb:nth-child(3) { animation-delay: 0.4s; }
+.navidad-luces .bulb:nth-child(4) { animation-delay: 0.6s; }
+.navidad-luces .bulb:nth-child(5) { animation-delay: 0.8s; }
+.navidad-luces .bulb:nth-child(6) { animation-delay: 1s; }
+.navidad-luces .bulb:nth-child(7) { animation-delay: 1.2s; }
+.navidad-luces .bulb:nth-child(8) { animation-delay: 1.4s; }
+
+/* ===== ❄️ Nieve suave en toda la página (solo CSS) ===== */
+
+.nieve {
+  pointer-events: none;      /* Para que se pueda hacer clic normal */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  background-image:
+    radial-gradient(2px 2px at 10px 10px, rgba(255,255,255,0.9) 50%, transparent 50%),
+    radial-gradient(3px 3px at 50px 50px, rgba(255,255,255,0.8) 50%, transparent 50%),
+    radial-gradient(2px 2px at 90px 20px, rgba(255,255,255,0.9) 50%, transparent 50%);
+  background-size: 120px 180px, 160px 220px, 140px 200px;
+  animation: nieve-caer 12s linear infinite;
+}
+
+@keyframes nieve-caer {
+  0% {
+    transform: translateY(-20px);
+    background-position: 0 0, 0 0, 0 0;
+  }
+  100% {
+    transform: translateY(20px);
+    background-position: 0 600px, 0 800px, 0 1000px;
+  }
+}
+
+/* Copos individuales extra (para JS) */
+.copo-nieve {
+  position: fixed;
+  top: -10px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.9);
+  box-shadow: 0 0 6px rgba(255,255,255,0.9);
+  z-index: 6;
+  pointer-events: none;
+  animation-name: caer-copo;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes caer-copo {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(110vh);
+    opacity: 0.2;
+  }
+}
+/* ================== LUCES NAVIDEÑAS COLGANTES ================== */
+.luces-colgantes {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 40px; /* separación entre focos colgantes */
+  margin-top: 10px;
+  margin-bottom: 10px;
+  z-index: 999;
+  pointer-events: none;
+}
+
+/* Cuerda horizontal */
+.luces-colgantes .cuerda {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 4px;
+  background: #3f3f46;
+  border-radius: 2px;
+  z-index: -1;
+  box-shadow: 0 0 6px rgba(255,255,255,0.2);
+}
+
+/* Cada foco colgante */
+.luz-colgante {
+  width: 20px;
+  height: 28px;
+  border-radius: 50% 50% 55% 55%;
+  position: relative;
+  margin-top: 12px;
+  animation: swing 2s ease-in-out infinite alternate;
+  box-shadow: 0 0 10px rgba(255,255,255,0.6);
+  filter: brightness(1.2);
+}
+
+/* Cable que cuelga */
+.luz-colgante::before {
+  content: "";
+  position: absolute;
+  top: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3px;
+  height: 16px;
+  background: #4b5563;
+  border-radius: 1px;
+}
+
+/* Base del foco */
+.luz-colgante::after {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 14px;
+  height: 6px;
+  border-radius: 2px;
+  background: #374151;
+}
+
+/* COLORES NAVIDEÑOS */
+.luz-colgante.rojo {
+  background: #ff4d4d;
+  box-shadow: 0 0 12px #ff4d4d;
+}
+
+.luz-colgante.verde {
+  background: #22c55e;
+  box-shadow: 0 0 12px #22c55e;
+}
+
+.luz-colgante.amarillo {
+  background: #fde047;
+  box-shadow: 0 0 12px #fde047;
+}
+
+.luz-colgante.azul {
+  background: #3b82f6;
+  box-shadow: 0 0 12px #3b82f6;
+}
+
+/* Animación de movimiento (como si colgaran de un hilo) */
+@keyframes swing {
+  0% {
+    transform: rotate(-8deg);
+  }
+  100% {
+    transform: rotate(8deg);
+  }
+}
+
+/* Parpadeo suave */
+.luz-colgante {
+  animation: swing 2.4s ease-in-out infinite alternate,
+             parpadeo 1.5s infinite alternate;
+}
+
+@keyframes parpadeo {
+  0% { opacity: 0.7; filter: brightness(0.8); }
+  100% { opacity: 1; filter: brightness(1.3); }
+}
+/* ================== LUCES NAVIDEÑAS ESTILO CASA (ZIGZAG) ================== */
+
+.luces-casa {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 6px 0 10px;
+  pointer-events: none;
+}
+
+.luces-casa .fila {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 40px;
+}
+
+/* cable curvo de cada fila */
+.luces-casa .fila::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  right: 20px;
+  border-top: 2px solid #4b5563;
+  border-radius: 999px;
+  box-shadow: 0 0 8px rgba(255,255,255,0.12);
+}
+
+/* focos */
+.foco {
+  position: relative;
+  width: 18px;
+  height: 26px;
+  border-radius: 50% 50% 60% 60%;
+  margin-top: 18px;
+  box-shadow: 0 0 10px rgba(255,255,255,0.7);
+  animation: balanceo 2.4s ease-in-out infinite alternate,
+             parpadeoFoco 1.4s infinite alternate;
+}
+
+/* cablecito que cuelga al foco */
+.foco::before {
+  content: "";
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3px;
+  height: 14px;
+  background: #4b5563;
+  border-radius: 2px;
+}
+
+/* base del foco */
+.foco::after {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 14px;
+  height: 6px;
+  border-radius: 2px;
+  background: #374151;
+}
+
+/* colores navideños */
+.foco.rojo {
+  background: #ef4444;
+  box-shadow: 0 0 12px #ef4444;
+}
+.foco.verde {
+  background: #22c55e;
+  box-shadow: 0 0 12px #22c55e;
+}
+.foco.amarillo {
+  background: #fde047;
+  box-shadow: 0 0 12px #fde047;
+}
+.foco.azul {
+  background: #3b82f6;
+  box-shadow: 0 0 12px #3b82f6;
+}
+
+/* que no queden todos a la misma altura -> efecto zigzag */
+.fila1 .foco:nth-child(odd) {
+  transform-origin: top center;
+  margin-top: 22px;
+}
+.fila1 .foco:nth-child(even) {
+  transform-origin: top center;
+  margin-top: 14px;
+}
+.fila2 .foco:nth-child(odd) {
+  transform-origin: top center;
+  margin-top: 16px;
+}
+.fila2 .foco:nth-child(even) {
+  transform-origin: top center;
+  margin-top: 24px;
+}
+
+/* movimiento tipo colgando */
+@keyframes balanceo {
+  0% {
+    transform: rotate(-6deg);
+  }
+  100% {
+    transform: rotate(6deg);
+  }
+}
+
+/* parpadeo suave */
+@keyframes parpadeoFoco {
+  0% {
+    opacity: 0.7;
+    filter: brightness(0.9);
+  }
+  100% {
+    opacity: 1;
+    filter: brightness(1.4);
+  }
+}

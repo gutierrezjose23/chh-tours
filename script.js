@@ -194,3 +194,50 @@ const animatedElements = document.querySelectorAll(
     particlesContainer.appendChild(particle);
   }
 });
+
+/* 🎄 GENERADOR DE LUCES NAVIDEÑAS */
+document.addEventListener("DOMContentLoaded", () => {
+  const cont = document.getElementById("navidad");
+  if (!cont) return;
+
+  const cantidad = 35; // Número de luces (puedes subirlo)
+  for (let i = 0; i < cantidad; i++) {
+    const luz = document.createElement("div");
+    luz.classList.add("luz");
+
+    // posiciones
+    luz.style.left = Math.random() * 100 + "%";
+    
+    // tamaños aleatorios
+    const size = Math.random() * 5 + 3; 
+    luz.style.width = size + "px";
+    luz.style.height = size + "px";
+
+    // duración de caída
+    luz.style.animationDuration = Math.random() * 4 + 4 + "s";
+
+    // retraso
+    luz.style.animationDelay = Math.random() * 5 + "s";
+
+    cont.appendChild(luz);
+  }
+  // ❄️ Generar copos de nieve adicionales
+document.addEventListener("DOMContentLoaded", () => {
+  const cantidadCopos = 40; // puedes subir o bajar esta cantidad
+
+  for (let i = 0; i < cantidadCopos; i++) {
+    const copo = document.createElement("div");
+    copo.classList.add("copo-nieve");
+
+    // Posición horizontal aleatoria
+    copo.style.left = Math.random() * 100 + "vw";
+
+    // Duración y delay aleatorio para que no caigan igual
+    copo.style.animationDuration = 5 + Math.random() * 10 + "s";
+    copo.style.animationDelay = Math.random() * 5 + "s";
+
+    document.body.appendChild(copo);
+  }
+});
+
+});
