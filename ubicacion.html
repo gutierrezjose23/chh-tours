@@ -3,56 +3,78 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CHH Tours - Ubicación</title>
+  <title>A.CH.H Tours - Ubicación</title>
   <link rel="stylesheet" href="estilos.css" />
 </head>
+
 <body>
 
-  <!-- Header -->
-  <header>
-    <h1>A H CH H Tours</h1>
-   <nav>
+  <!-- HEADER UNIFICADO -->
+  <header id="main-header">
+    <div class="logo-container">
+      <img src="imagenes/logo-achh.png" alt="A.CH.H Tours" class="logo">
+    </div>
+
+    <nav>
       <ul>
         <li><a href="index.html">Inicio</a></li>
         <li><a href="rutas.html">Rutas</a></li>
         <li><a href="galeria.html">Galería</a></li>
         <li><a href="contacto.html">Contacto</a></li>
         <li><a href="nosotros.html">Nosotros</a></li>
-        <li><a href="testimonios.html">Testimonios</a></li>
+        <li><a href="testimonios.html">Opiniones</a></li>
         <li><a href="preguntasfrecuentes.html">Preguntas Frecuentes</a></li>
         <li><a href="ubicacion.html">Ubicación</a></li>
         <li><a href="politica.html">Política de Seguridad</a></li>
-        <li><a href="tablero.html">tablero</a></li>
       </ul>
     </nav>
   </header>
 
-  <!-- Main -->
+  <!-- CONTENIDO -->
   <main class="container">
-    <section class="ubicacion">
-      <h2>¿Dónde nos encontramos?</h2>
+
+    <!-- Usamos la tarjeta .info para mantener el diseño -->
+    <section class="info ubicacion">
+      <div class="btn-como-llegar-container">
+  <a 
+    href="https://www.google.com/maps/dir/?api=1&destination=Av.+Alfredo+Mendiola+4100,+Independencia,+Lima" 
+    target="_blank" 
+    class="btn-como-llegar">
+    🚗 Cómo llegar a CHH Tours
+  </a>
+</div>
+
+      <h2 class="neon-title">¿Dónde nos ubicamos?</h2>
+
       <p>
-        Puedes encontrarnos en <strong>Av. Alfredo Mendiola 4100, Independencia, Lima</strong>, a pocos metros del Centro Comercial MegaPlaza. Nuestro punto de embarque está estratégicamente ubicado para facilitar el acceso y la comodidad de nuestros pasajeros.
-      </p>
-      <p>
-        Visítanos o encuéntranos fácilmente con el siguiente mapa interactivo:
+        Nuestro punto de embarque principal se encuentra en 
+        <strong>Av. Alfredo Mendiola 4100, Independencia – Lima</strong>,
+        a solo unos metros del Centro Comercial MegaPlaza. Un lugar accesible,
+        seguro y fácil de ubicar para todos nuestros pasajeros.
       </p>
 
-      <div class="mapa-responsive">
+      <p>
+        Puedes encontrarnos sin problemas utilizando el siguiente mapa
+        interactivo. Si necesitas orientación adicional, nuestro personal
+        está disponible para ayudarte vía WhatsApp.
+      </p>
+
+      <!-- MAPA -->
+      <div class="mapa-responsive" style="margin-top: 25px;">
         <iframe 
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2415.43644842801!2d-77.0657634917231!3d-11.985538744984016!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105ce4e3b2c11c5%3A0x24db14e00b8efe7a!2sAv.%20Alfredo%20Mendiola%204100%2C%20Independencia%2015311!5e0!3m2!1ses-419!2spe!4v1752133318392!5m2!1ses-419!2spe" 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2415.43644842801!2d-77.0657634917231!3d-11.985538744984016!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105ce4e3b2c11c5%3A0x24db14e00b8efe7a!2sAv.%20Alfredo%20Mendiola%204100%2C%20Independencia%2015311!5e0!3m2!1ses-419!2spe!4v1752133318392!5m2!1ses-419!2spe"
           width="100%" 
           height="450" 
-          style="border:0; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1);" 
+          style="border:0; border-radius: 12px; box-shadow: 0 0 18px rgba(185, 28, 28, 0.45);" 
           allowfullscreen="" 
-          loading="lazy" 
-          referrerpolicy="no-referrer-when-downgrade">
+          loading="lazy">
         </iframe>
       </div>
     </section>
+
   </main>
 
-  <!-- Footer -->
+  <!-- FOOTER -->
   <footer>
     <div class="whatsapp-float">
       <a href="https://wa.me/51933725248" target="_blank">
@@ -62,6 +84,6 @@
     <p>&copy; 2025 CHH Tours. Todos los derechos reservados.</p>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="js/script.js"></script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-/* ======== RESET BÁSICO ======== */
+/* ================== RESET BÁSICO ================== */
 * {
   margin: 0;
   padding: 0;
@@ -8,70 +8,113 @@
 body {
   font-family: 'Segoe UI', sans-serif;
   line-height: 1.6;
-  background: linear-gradient(-45deg, #e0f7fa, #b2ebf2, #81d4fa, #e0f7fa);
-  background-size: 400% 400%;
-  animation: fondoDinamico 20s ease infinite;
-  color: #333;
+  /* Fondo general negro con toque rojo */
+  background: radial-gradient(circle at top, #111827 0%, #030712 40%, #000000 100%);
+  color: #e5e7eb;
 }
 
-
-/* ======== HEADER Y NAVEGACIÓN ======== */
+/* ================== HEADER, LOGO Y NAVEGACIÓN ================== */
 header {
- background: #2162C1;
-background: linear-gradient(135deg, #2162C1, #13C61E);
-  padding: 20px 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: linear-gradient(135deg, #000000 0%, #111827 40%, #1f2933 75%, #b91c1c 100%);
+  backdrop-filter: blur(10px);
+  padding: 12px 0;
   text-align: center;
+  transition: padding 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+  border-bottom: 1px solid rgba(248, 250, 252, 0.08);
 }
 
-
-h1 {
-  font-size: 2em;
-  margin-bottom: 10px;
+/* Contenedor del logo */
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 6px;
 }
 
+/* Logo grande al inicio */
+.logo {
+  width: 150px;
+  filter: drop-shadow(0 0 10px rgba(248, 113, 113, 0.7));
+  transition: width 0.25s ease, transform 0.25s ease, filter 0.25s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 16px rgba(248, 113, 113, 1));
+}
+
+/* Header en modo sticky (cuando haces scroll) */
+.header-sticky {
+  padding: 6px 0;
+  background: linear-gradient(135deg, #020617 0%, #000000 60%, #7f1d1d 100%);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.9);
+}
+
+/* Logo pequeño cuando el header está sticky */
+.header-sticky .logo {
+  width: 70px !important;
+  transform: translateY(-2px);
+}
+
+/* NAV */
 nav ul {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   list-style: none;
-  background-color: #2a6ccf;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 4px 10px 2px;
+  gap: 6px 18px;
+  background-color: transparent;
 }
 
 nav ul li {
-  margin: 5px 15px;
+  margin: 0;
 }
 
 nav ul li a {
-  color: white;
+  color: #e5e7eb;
   text-decoration: none;
-  font-weight: bold;
-  padding: 8px 12px;
-  transition: background-color 0.3s ease;
+  font-weight: 600;
+  font-size: 0.82rem;
+  padding: 6px 10px;
+  border-radius: 999px;
+  opacity: 0.85;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease,
+    transform 0.1s ease,
+    opacity 0.15s ease;
 }
 
 nav ul li a:hover {
-  background-color: #003366;
-  border-radius: 5px;
+  background-color: #ef4444;
+  color: #ffffff;
+  opacity: 1;
+  transform: translateY(-1px);
 }
 
-/* ======== MAIN ======== */
+/* ================== MAIN / CONTENEDOR PRINCIPAL ================== */
 main {
   padding: 40px 20px;
-  max-width: 900px;
-  margin: auto;
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  max-width: 1100px;
+  margin: 40px auto;
+  background: radial-gradient(circle at top, #020617 0%, #020617 40%, #020617 100%);
+  border-radius: 18px;
+  box-shadow: 0 22px 50px rgba(0, 0, 0, 0.85);
+  border: 1px solid rgba(248, 113, 113, 0.12);
 }
 
 section {
   margin-bottom: 40px;
-  padding: 0 20px;
+  padding: 0 10px;
 }
 
-h2 {
-  color: #0066cc;
+h2,
+h3 {
+  color: #f97373;
   margin-bottom: 15px;
 }
 
@@ -79,45 +122,112 @@ p, li, blockquote {
   margin-bottom: 15px;
 }
 
-/* ======== SECCIÓN HERO ======== */
+/* ================== HERO (PORTADA DE INICIO) ================== */
 .hero {
+  position: relative;
+  height: 80vh;
+  min-height: 450px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  padding: 30px 15px;
+  color: #fff;
+  border-radius: 18px;
+  margin-bottom: 40px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.9);
 }
 
 .hero img {
+  position: absolute;
+  inset: 0;
   width: 100%;
-  max-height: 300px;
+  height: 100%;
   object-fit: cover;
-  border-radius: 10px;
-  margin-bottom: 20px;
+  filter: brightness(0.32);
+}
+
+/* recuadro de texto encima de la imagen */
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 650px;
+  padding: 24px 22px;
+  background: rgba(15, 23, 42, 0.9);
+  border-radius: 18px;
+  border: 1px solid rgba(248, 113, 113, 0.4);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.9);
 }
 
 .hero h2 {
-  font-size: 2em;
-  color: #0066cc;
+  font-size: 2.4em;
+  margin-bottom: 15px;
+  color: #f9fafb;
 }
 
 .hero p {
-  font-size: 1.1em;
+  font-size: 1.02em;
   margin-top: 10px;
-  color: #444;
-
+  color: #e5e7eb;
+  line-height: 1.6;
   opacity: 0;
   transform: translateY(20px);
   animation: aparecer 1s ease-out forwards;
   animation-delay: 0.3s;
 }
 
-/* ======== SECCIÓN INFO ======== */
+/* Botón de WhatsApp en el hero (se mantiene verde por marca) */
+.btn-whatsapp-hero {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 28px;
+  background-color: #25D366;
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 999px;
+  font-size: 1.05rem;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.9);
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-whatsapp-hero:hover {
+  background-color: #1ebe5d;
+  transform: scale(1.03) translateY(-1px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 1);
+}
+
+/* Responsive hero */
+@media (max-width: 768px) {
+  .hero {
+    height: 70vh;
+  }
+
+  .hero h2 {
+    font-size: 2.1em;
+  }
+
+  .hero p {
+    font-size: 1em;
+  }
+}
+
+/* ================== SECCIÓN ¿POR QUÉ ELEGIRNOS? ================== */
 .info {
-  margin-top: 40px;
-  padding: 0 20px;
+  margin-top: 10px;
+  padding: 25px 20px;
+  text-align: left;
+  background: #020617;
+  border-radius: 16px;
+  border: 1px solid rgba(248, 113, 113, 0.28);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.8);
 }
 
 .info h3 {
-  color: #004080;
+  color: #f97373;
   margin-bottom: 15px;
+  font-size: 1.6rem;
+  text-align: center;
 }
 
 .info ul {
@@ -128,10 +238,10 @@ p, li, blockquote {
 .info li {
   margin-bottom: 10px;
   font-size: 1em;
-  color: #333;
+  color: #e5e7eb;
 }
 
-/* ======== ANIMACIONES ======== */
+/* ================== ANIMACIONES ================== */
 @keyframes aparecer {
   to {
     opacity: 1;
@@ -139,12 +249,12 @@ p, li, blockquote {
   }
 }
 
-/* ======== GALERÍA DE IMÁGENES Y VIDEOS ======== */
+/* ================== GALERÍA DE IMÁGENES Y VIDEOS ================== */
 .galeria {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   gap: 15px;
-  padding: 20px;
+  padding: 20px 0;
   margin-top: 20px;
 }
 
@@ -154,12 +264,19 @@ p, li, blockquote {
   aspect-ratio: 16 / 9;
   height: auto;
   object-fit: cover;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.8);
+  transition: transform 0.3s ease, filter 0.3s ease, box-shadow 0.3s ease;
 }
 
+.galeria img:hover,
+.galeria video:hover {
+  transform: scale(1.04);
+  filter: brightness(1.05);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.9);
+}
 
-/* ======== BOTÓN WHATSAPP ======== */
+/* ================== BOTÓN WHATSAPP FLOTANTE ================== */
 .whatsapp-float {
   position: fixed;
   bottom: 20px;
@@ -170,32 +287,38 @@ p, li, blockquote {
 .whatsapp-float img {
   width: 60px;
   height: 60px;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.9);
+  border-radius: 50%;
 }
 
 .whatsapp-float img:hover {
   transform: scale(1.1);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 1);
 }
 
-/* ======== FOOTER ======== */
+/* ================== FOOTER ================== */
 footer {
- background: #2162C1;
-background: linear-gradient(135deg, #2162C1, #13C61E);
+  background: linear-gradient(135deg, #000000, #111827, #7f1d1d);
   text-align: center;
   padding: 15px;
   margin-top: 40px;
+  color: #e5e7eb;
+  font-size: 0.95rem;
+  border-top: 1px solid rgba(248, 113, 113, 0.3);
 }
 
-
+/* ================== CONTACTO ================== */
 .contacto {
   padding: 20px;
-  background-color: #f3f9ff;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  background-color: #020617;
+  border-radius: 10px;
+  box-shadow: 0 0 16px rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(248, 113, 113, 0.35);
 }
 
 .contacto h2 {
-  color: #0066cc;
+  color: #f97373;
   margin-bottom: 10px;
 }
 
@@ -209,9 +332,10 @@ background: linear-gradient(135deg, #2162C1, #13C61E);
   font-size: 1.1em;
 }
 
+/* ================== NOSOTROS ================== */
 .nosotros h2 {
   text-align: center;
-  color: #004080;
+  color: #f97373;
   margin-bottom: 20px;
 }
 
@@ -219,144 +343,63 @@ background: linear-gradient(135deg, #2162C1, #13C61E);
   text-align: justify;
   margin-bottom: 15px;
   font-size: 1.05em;
-  color: #333;
+  color: #e5e7eb;
 }
 
-.politica h2 {
-  text-align: center;
-  color: #004080;
-  margin-bottom: 20px;
-}
-
-.politica h3 {
-  margin-top: 20px;
-  color: #0066cc;
-}
-
-.politica ul {
-  padding-left: 20px;
-  margin-top: 10px;
-}
-
-.politica ul li {
-  margin-bottom: 10px;
-  font-size: 1em;
-}
-
+/* ================== MISIÓN Y VISIÓN ================== */
 .mision-vision {
-  background-color: #f0f8ff;
-  padding: 30px 20px;
-  border-radius: 8px;
   margin-top: 30px;
+  padding: 30px 20px;
+  background-color: #020617;
+  border-left: 5px solid #ef4444;
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.85);
 }
 
 .mision-vision h3 {
-  color: #004080;
+  color: #f97373;
   margin-bottom: 10px;
+  font-size: 1.35rem;
 }
 
 .mision-vision p {
-  margin-bottom: 20px;
-  color: #333;
-  font-size: 1.05em;
-}
-
-.mision-vision {
-  margin-top: 40px;
-  padding: 20px;
-  background-color: #f7f9fc;
-  border-left: 5px solid #0066cc;
-  border-radius: 8px;
-}
-
-.mision-vision h2 {
-  color: #004080;
-  margin-bottom: 10px;
-}
-
-.mision-vision p {
-  color: #444;
-  font-size: 1.05em;
+  color: #e5e7eb;
+  font-size: 1.02em;
   line-height: 1.7;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 
-nav ul {
-  background-color: transparent; /*  le da un fondo transparente al nav no tocar */
-}
-
-.galeria-principal h2 {
-  text-align: center;
-  color: #2c3e50;
-  margin-bottom: 20px;
-}
-
-.compartir-trabajador {
-  margin-top: 60px;
-  padding: 30px 20px;
-  background: #f0fff0;
-  border-radius: 12px;
-  box-shadow: 0 0 10px rgba(0, 100, 0, 0.1);
-}
-
-.compartir-trabajador h3 {
-  color: #2e7d32;
-  text-align: center;
-  margin-bottom: 10px;
-}
-
-.compartir-trabajador p {
-  text-align: center;
-  font-size: 1.05em;
-  margin-bottom: 25px;
-}
-
-.galeria {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 15px;
-}
-
-@keyframes fondoDinamico {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
+/* ================== MENSAJE FAMILIA ================== */
 .mensaje-familia {
   text-align: center;
   margin-bottom: 30px;
   padding: 20px;
-  background: #f5f5f5cc;
-  border-left: 5px solid #00a676;
+  background: #020617;
+  border-left: 5px solid #ef4444;
   border-radius: 10px;
   font-size: 1.05em;
-  box-shadow: 0 0 8px rgba(0,0,0,0.05);
+  box-shadow: 0 0 14px rgba(0, 0, 0, 0.8);
 }
 
 .mensaje-familia h2 {
-  color: #004080;
+  color: #f97373;
   margin-bottom: 10px;
 }
 
+/* ================== FRASES MOTIVADORAS ================== */
 .frases-motivadoras {
-  background: #e3fbe5;
+  background: #050509;
   padding: 30px 20px;
   margin: 40px auto;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 100, 0, 0.1);
+  box-shadow: 0 0 18px rgba(0, 0, 0, 0.85);
   max-width: 900px;
+  border: 1px solid rgba(248, 113, 113, 0.25);
 }
 
 .frases-motivadoras h3 {
   text-align: center;
-  color: #2e7d32;
+  color: #fecaca;
   margin-bottom: 20px;
   font-size: 1.5em;
 }
@@ -370,22 +413,21 @@ nav ul {
   font-size: 1.1em;
   margin-bottom: 10px;
   text-align: center;
-  color: #333;
+  color: #e5e7eb;
 }
 
-
-/* ======== REDES SOCIALES ======== */
+/* ================== REDES SOCIALES ================== */
 .redes-sociales {
-  background-color: #fff9ec;
+  background-color: #020617;
   padding: 25px 20px;
   margin-top: 30px;
-  border-left: 5px solid #ffc107;
+  border-left: 5px solid #f97373;
   border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 14px rgba(0, 0, 0, 0.8);
 }
 
 .redes-sociales h3 {
-  color: #d48f00;
+  color: #fecaca;
   margin-bottom: 10px;
   text-align: center;
 }
@@ -393,6 +435,7 @@ nav ul {
 .redes-sociales p {
   text-align: center;
   margin-bottom: 15px;
+  color: #e5e7eb;
 }
 
 .redes-sociales ul {
@@ -407,34 +450,36 @@ nav ul {
 
 .redes-sociales ul li a {
   text-decoration: none;
-  color: #0077b6;
+  color: #f97373;
   font-weight: bold;
-  transition: color 0.3s ease;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
 .redes-sociales ul li a:hover {
-  color: #005f87;
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(248, 113, 113, 0.9);
 }
 
-/* ======== FORMULARIO DE CONTACTO ======== */
+/* ================== FORMULARIO DE CONTACTO ================== */
 .formulario-contacto {
   margin: 40px 0;
-  background-color: #f9fcff;
+  background-color: #020617;
   padding: 25px;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  box-shadow: 0 0 18px rgba(0, 0, 0, 0.85);
+  border: 1px solid rgba(248, 113, 113, 0.35);
 }
 
 .formulario-contacto h3 {
   text-align: center;
-  color: #006644;
+  color: #f97373;
   margin-bottom: 10px;
 }
 
 .formulario-contacto p {
   text-align: center;
   margin-bottom: 20px;
-  color: #333;
+  color: #e5e7eb;
 }
 
 .formulario-contacto form {
@@ -448,14 +493,16 @@ nav ul {
 .formulario-contacto input,
 .formulario-contacto textarea {
   padding: 12px;
-  border: 1px solid #ccc;
+  border: 1px solid #4b5563;
+  background-color: #020617;
+  color: #e5e7eb;
   border-radius: 6px;
   font-size: 1em;
   resize: vertical;
 }
 
 .formulario-contacto button {
-  background-color: #25D366;
+  background-color: #ef4444;
   color: white;
   padding: 12px;
   font-size: 1em;
@@ -463,41 +510,43 @@ nav ul {
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
 }
 
 .formulario-contacto button:hover {
-  background-color: #1ebe5d;
+  background-color: #b91c1c;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.9);
+  transform: translateY(-1px);
 }
 
-/* ======== POLÍTICA DE SEGURIDAD ======== */
+/* ================== POLÍTICA DE SEGURIDAD ================== */
 .politica {
-  background-color: #f8fdfc;
+  background-color: #020617;
   padding: 30px 25px;
-  border-left: 6px solid #1a936f;
+  border-left: 6px solid #ef4444;
   border-radius: 10px;
-  box-shadow: 0 2px 12px rgba(0, 100, 80, 0.08);
+  box-shadow: 0 2px 18px rgba(0, 0, 0, 0.85);
   margin-top: 30px;
   line-height: 1.7;
 }
 
 .politica h2 {
   text-align: center;
-  color: #0c4b33;
+  color: #fecaca;
   margin-bottom: 20px;
   font-size: 2em;
 }
 
 .politica h3 {
   margin-top: 25px;
-  color: #1a936f;
+  color: #f97373;
   font-size: 1.3em;
-  border-bottom: 2px solid #b8e1dd;
+  border-bottom: 2px solid #7f1d1d;
   padding-bottom: 5px;
 }
 
 .politica p {
-  color: #333;
+  color: #e5e7eb;
   margin-bottom: 15px;
   font-size: 1.05em;
 }
@@ -509,12 +558,12 @@ nav ul {
 }
 
 .politica ul li {
-  background-color: #e9f8f5;
+  background-color: #111827;
   padding: 10px 15px;
   border-radius: 6px;
   margin-bottom: 10px;
-  color: #155f4a;
-  box-shadow: 0 0 5px rgba(0, 80, 60, 0.05);
+  color: #fecaca;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.75);
   display: flex;
   align-items: center;
   gap: 10px;
@@ -525,6 +574,8 @@ nav ul {
   content: '✔️';
   font-size: 1.2em;
 }
+
+/* ================== TABLAS / CELEBRACIÓN ================== */
 .tabla-container,
 .celebration-container {
   display: flex;
@@ -534,32 +585,157 @@ nav ul {
   padding: 20px;
 }
 
-h2 {
+.tabla-container h2,
+.celebration-container h2 {
   margin-bottom: 15px;
   font-size: 24px;
-  color: #333;
+  color: #e5e7eb;
 }
 
 table {
   border-collapse: collapse;
   width: 90%;
   max-width: 1000px;
-  background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #020617;
+  box-shadow: 0 0 16px rgba(0, 0, 0, 0.8);
 }
 
 th,
 td {
   padding: 12px;
   text-align: left;
-  border: 1px solid #ddd;
+  border: 1px solid #4b5563;
+  color: #e5e7eb;
 }
 
 th {
-  background-color: #007bff;
+  background-color: #b91c1c;
   color: white;
 }
 
 tr:nth-child(even) {
-  background-color: #f9f9f9;
+  background-color: #030712;
+}
+
+/* ================== VARIOS ================== */
+.galeria-principal h2 {
+  text-align: center;
+  color: #f97373;
+  margin-bottom: 20px;
+}
+
+.compartir-trabajador {
+  margin-top: 60px;
+  padding: 30px 20px;
+  background: #020617;
+  border-radius: 12px;
+  box-shadow: 0 0 16px rgba(0, 0, 0, 0.85);
+  border: 1px solid rgba(248, 113, 113, 0.3);
+}
+
+.compartir-trabajador h3 {
+  color: #fecaca;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.compartir-trabajador p {
+  text-align: center;
+  font-size: 1.05em;
+  margin-bottom: 25px;
+  color: #e5e7eb;
+}
+
+/* ====== LOGO ANIMADO (pulse opcional) ====== */
+.logo-glow {
+  animation: logoPulse 3s ease-in-out infinite;
+}
+
+@keyframes logoPulse {
+  0%, 100% {
+    transform: translateY(0);
+    filter: drop-shadow(0 0 10px rgba(248, 113, 113, 0.7));
+  }
+  50% {
+    transform: translateY(-1px) scale(1.03);
+    filter: drop-shadow(0 0 18px rgba(248, 113, 113, 1));
+  }
+}
+
+/* ====== NEÓN PARA TÍTULOS ====== */
+.neon-title {
+  text-shadow:
+    0 0 6px rgba(248, 113, 113, 0.7),
+    0 0 16px rgba(248, 113, 113, 0.55);
+}
+
+/* ====== ANIMACIÓN SCROLL ====== */
+.hidden-on-scroll {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.show-on-scroll {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ====== PARTÍCULAS DE FONDO ====== */
+.particles-bg {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  z-index: -1;
+  background: radial-gradient(circle at top, #111827 0%, #020617 40%, #000000 100%);
+}
+
+.particle {
+  position: absolute;
+  bottom: -10px;
+  border-radius: 999px;
+  background: radial-gradient(circle, #f97373 0, #ef4444 40%, transparent 70%);
+  opacity: 0.9;
+  animation-name: particleFloat;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes particleFloat {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-120vh) translateX(30px);
+    opacity: 0;
+  }
+}
+
+/* BOTÓN CÓMO LLEGAR */
+.btn-como-llegar-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.btn-como-llegar {
+  display: inline-block;
+  background: #b91c1c;
+  padding: 12px 25px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: none;
+  transition: background 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 0 10px rgba(185, 28, 28, 0.5);
+}
+
+.btn-como-llegar:hover {
+  background: #dc2626;
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(220, 38, 38, 0.7);
 }
